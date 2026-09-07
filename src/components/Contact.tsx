@@ -61,6 +61,8 @@ export default function Contact() {
   const [form, setForm] = useState<FormData>({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -68,20 +70,34 @@ export default function Contact() {
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
+    if (sendError) setSendError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = validate(form);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-    // mailto fallback
-    const subject = encodeURIComponent(form.subject);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:suriyacardecs@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+
+    setSending(true);
+    setSendError(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to send message');
+      setSubmitted(true);
+    } catch (err) {
+      setSendError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass = (field: keyof FormErrors) =>
@@ -207,7 +223,7 @@ export default function Contact() {
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
                   <p className="text-sm text-[#6b6b7e]">
-                    Your default email client has opened. I'll reply as soon as possible.
+                    Your message has been delivered. I'll reply as soon as possible.
                   </p>
                 </div>
                 <button
@@ -265,16 +281,30 @@ export default function Contact() {
                   />
                   {errors.message && <p className="text-xs text-red-400 mt-1.5 ml-1">{errors.message}</p>}
                 </div>
+                {sendError && (
+                  <p className="text-xs text-red-400 text-center bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
+                    {sendError}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="group flex items-center gap-3 w-full justify-center px-6 py-4 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold tracking-widest uppercase rounded-xl transition-all duration-200"
+                  disabled={sending}
+                  className="group flex items-center gap-3 w-full justify-center px-6 py-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-semibold tracking-widest uppercase rounded-xl transition-all duration-200"
                 >
-                  Send Message
-                  <Send size={15} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  {sending ? (
+                    <>
+                      <svg className="animate-spin" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                      </svg>
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send size={15} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </>
+                  )}
                 </button>
-                <p className="text-xs text-[#3a3a4e] text-center">
-                  This form uses your default email client.
-                </p>
               </form>
             )}
           </motion.div>
