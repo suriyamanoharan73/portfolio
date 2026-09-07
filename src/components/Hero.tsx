@@ -172,11 +172,12 @@ export default function Hero() {
                 <ArrowDown size={13} className="group-hover:translate-y-0.5 transition-transform" />
               </button>
               <a
-                href="/resume.pdf"
-                download
+                href="https://drive.google.com/file/d/1HtOSLnVvqEimDJU0uQKBeuzHyxINJuBi/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 border border-white/10 hover:border-white/20 hover:bg-white/4 text-white text-xs tracking-[0.15em] uppercase font-semibold rounded-lg transition-all duration-200"
               >
-                Download Resume
+                View Resume
               </a>
               <button
                 onClick={() => {

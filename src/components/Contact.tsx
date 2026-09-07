@@ -199,8 +199,9 @@ export default function Contact() {
                 GitHub
               </a>
               <a
-                href="/resume.pdf"
-                download
+                href="https://drive.google.com/file/d/1HtOSLnVvqEimDJU0uQKBeuzHyxINJuBi/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 border border-white/10 hover:border-white/20 hover:bg-white/5 text-white text-xs font-semibold tracking-widest uppercase rounded-lg transition-all duration-200"
               >
                 <Download size={13} />
