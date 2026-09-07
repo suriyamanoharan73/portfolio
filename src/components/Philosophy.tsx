@@ -33,7 +33,7 @@ export default function Philosophy() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="philosophy" className="relative py-32 border-t border-white/5 overflow-hidden">
+    <section id="philosophy" className="relative py-16 border-t border-white/5 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
       <div className="absolute inset-0 radial-glow-top" />
 
@@ -43,9 +43,9 @@ export default function Philosophy() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-20 max-w-xl"
+          className="mb-10 max-w-xl"
         >
-          <span className="section-number">06 / Philosophy</span>
+          {/* <span className="section-number">06 / Philosophy</span> */}
           <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
             HOW I BUILD
             <br />

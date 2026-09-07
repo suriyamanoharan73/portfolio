@@ -7,7 +7,7 @@ export default function Experience() {
   const { ref, inView } = useInView(0.05);
 
   return (
-    <section id="experience" className="relative py-32 border-t border-white/5">
+    <section id="experience" className="relative py-16 border-t border-white/5">
       <div className="absolute inset-0 bg-[#030306]" />
       <div className="absolute inset-0 bg-grid-pattern opacity-25" />
 
@@ -17,9 +17,9 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-10"
         >
-          <span className="section-number">05 / Experience</span>
+          {/* <span className="section-number">05 / Experience</span> */}
           <h2 className="font-['Space_Grotesk'] text-[clamp(48px,7vw,72px)] font-bold tracking-tight text-white leading-none mt-4">
             EXPERIENCE
           </h2>
@@ -50,9 +50,9 @@ export default function Experience() {
               </div>
 
               {/* Card */}
-              <div className="bg-white/[0.025] border border-white/6 rounded-2xl p-7 sm:p-9 hover:border-white/10 hover:bg-white/[0.035] transition-all duration-300">
+              <div className="bg-white/[0.025] border border-white/6 rounded-2xl p-5 sm:p-7 hover:border-white/10 hover:bg-white/[0.035] transition-all duration-300">
                 {/* Header */}
-                <div className="flex flex-col sm:flex-row sm:items-start gap-5 mb-8">
+                <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-5">
                   <div className="flex items-start gap-4 flex-1">
                     <div className="p-2.5 bg-indigo-500/10 border border-indigo-500/15 rounded-xl shrink-0">
                       <Briefcase size={16} className="text-indigo-400" />

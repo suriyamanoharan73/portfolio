@@ -92,7 +92,7 @@ export default function Navbar() {
                 </svg>
               </div>
               <span className="text-[15px] font-bold tracking-tight">
-                <span className="text-white">suriya</span>
+                <span className="text-white">Suriya</span>
                 <span className="text-blue-500">M</span>
               </span>
             </a>

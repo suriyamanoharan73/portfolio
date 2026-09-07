@@ -53,16 +53,16 @@ export default function Services() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="services" className="relative py-32">
+    <section id="services" className="relative py-16">
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8"
         >
-          <span className="section-number">02 / What I Do</span>
+          {/* <span className="section-number">02 / What I Do</span> */}
           <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
             WHAT I<br />
             <span className="text-[#3a3a4e]">BUILD</span>
@@ -79,7 +79,7 @@ export default function Services() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className={`group bg-[#050508] p-8 lg:p-10 border border-transparent transition-all duration-300 cursor-default ${service.borderColor} ${service.bgColor}`}
+                className={`group bg-[#050508] p-6 lg:p-8 border border-transparent transition-all duration-300 cursor-default ${service.borderColor} ${service.bgColor}`}
               >
                 <div className="space-y-5">
                   {/* Icon + number */}

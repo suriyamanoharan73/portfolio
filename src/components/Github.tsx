@@ -54,9 +54,9 @@ export default function GithubSection() {
   const { ref, inView } = useInView(0.15);
 
   return (
-    <section id="github" className="relative py-32 border-t border-white/5">
+    <section id="github" className="relative py-16 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -65,7 +65,7 @@ export default function GithubSection() {
             className="space-y-8"
           >
             <div>
-              <span className="section-number">08 / Code</span>
+              {/* <span className="section-number">08 / Code</span> */}
               <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
                 CODE IS WHERE
                 <br />

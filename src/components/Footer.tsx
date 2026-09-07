@@ -1,5 +1,5 @@
 import { Mail } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, LeetCodeIcon, GeeksForGeeksIcon } from './Icons';
 
 export default function Footer() {
   return (
@@ -37,6 +37,24 @@ export default function Footer() {
               aria-label="LinkedIn"
             >
               <LinkedinIcon width={16} height={16} />
+            </a>
+            <a
+              href="https://leetcode.com/u/Suriyacardecs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#3a3a4e] hover:text-[#FFA116] transition-colors duration-200"
+              aria-label="LeetCode"
+            >
+              <LeetCodeIcon width={16} height={16} />
+            </a>
+            <a
+              href="https://www.geeksforgeeks.org/user/suriyacx9vy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#3a3a4e] hover:text-[#2F8D46] transition-colors duration-200"
+              aria-label="GeeksforGeeks"
+            >
+              <GeeksForGeeksIcon width={16} height={16} />
             </a>
             <a
               href="mailto:suriyacardecs@gmail.com"

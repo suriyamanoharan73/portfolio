@@ -23,7 +23,7 @@ export default function About() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="about" className="relative py-32 overflow-hidden">
+    <section id="about" className="relative py-16 overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-6" ref={ref}>
@@ -31,12 +31,12 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid lg:grid-cols-[1fr_1.3fr] gap-16 lg:gap-24 items-start"
+          className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-16 items-start"
         >
           {/* Left */}
-          <motion.div variants={itemVariants} className="space-y-8">
+          <motion.div variants={itemVariants} className="space-y-5">
             <div>
-              <span className="section-number">01 / About</span>
+              {/* <span className="section-number">01 / About</span> */}
               <h2 className="font-['Space_Grotesk'] text-[clamp(48px,7vw,80px)] font-bold tracking-tight text-white leading-none mt-4">
                 ABOUT
               </h2>
@@ -59,7 +59,7 @@ export default function About() {
             </div>
 
             {/* Primary stack */}
-            <div className="border-t border-white/5 pt-8">
+            <div className="border-t border-white/5 pt-5">
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#3a3a4e] mb-5">
                 Primary Stack
               </p>
@@ -87,7 +87,7 @@ export default function About() {
           </motion.div>
 
           {/* Right */}
-          <motion.div variants={itemVariants} className="space-y-6 lg:pt-14">
+          <motion.div variants={itemVariants} className="space-y-4 lg:pt-6">
             <p className="text-xl font-light text-[#c4c4d4] leading-relaxed">
               I'm Suriya, a Software Engineer passionate about building{' '}
               <span className="text-white font-normal">scalable applications</span> and solving

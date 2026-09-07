@@ -259,9 +259,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 0.8 }}
-          className="flex flex-col items-center gap-2 mt-20 lg:mt-12"
+          className="flex flex-col items-center gap-2 mt-10 lg:mt-8"
         >
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[#2a2a3a]">
+          {/* <span className="text-[10px] tracking-[0.25em] uppercase text-[#2a2a3a]">
             Scroll to explore
           </span>
           <motion.div
@@ -269,7 +269,7 @@ export default function Hero() {
             transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
           >
             <ArrowDown size={13} className="text-[#2a2a3a]" />
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>

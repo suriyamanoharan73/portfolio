@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Send, ArrowUpRight, Download } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, LeetCodeIcon, GeeksForGeeksIcon } from './Icons';
 import { useInView } from '../hooks/useInView';
 
 interface FormData {
@@ -42,6 +42,18 @@ const socialLinks = [
     label: 'GitHub',
     value: 'github.com/suriyamanoharan73',
     href: 'https://github.com/suriyamanoharan73',
+  },
+  {
+    icon: <LeetCodeIcon width={16} height={16} />,
+    label: 'LeetCode',
+    value: 'leetcode.com/u/Suriyacardecs',
+    href: 'https://leetcode.com/u/Suriyacardecs',
+  },
+  {
+    icon: <GeeksForGeeksIcon width={16} height={16} />,
+    label: 'GeeksforGeeks',
+    value: 'geeksforgeeks.org/user/suriyacx9vy',
+    href: 'https://www.geeksforgeeks.org/user/suriyacx9vy',
   },
 ];
 
@@ -108,7 +120,7 @@ export default function Contact() {
     }`;
 
   return (
-    <section id="contact" className="relative py-32 border-t border-white/5 overflow-hidden">
+    <section id="contact" className="relative py-16 border-t border-white/5 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-[#030306]" />
       <div className="absolute inset-0 bg-grid-pattern opacity-30" />
@@ -120,9 +132,9 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20"
+          className="mb-10"
         >
-          <span className="section-number">09 / Contact</span>
+          {/* <span className="section-number">09 / Contact</span> */}
           <h2 className="font-['Space_Grotesk'] text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-none mt-6">
             <span className="text-white">LET'S BUILD</span>
             <br />
@@ -137,13 +149,13 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-10">
           {/* Left — contact info */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="space-y-6"
+            className="space-y-2"
           >
             {socialLinks.map((link, i) => (
                 <motion.a
@@ -154,7 +166,7 @@ export default function Contact() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.3 + i * 0.08 }}
-                  className="group flex items-center justify-between p-4 bg-white/2 border border-white/5 rounded-xl hover:bg-white/5 hover:border-white/12 transition-all duration-200"
+                  className="group flex items-center justify-between p-3 bg-white/2 border border-white/5 rounded-xl hover:bg-white/5 hover:border-white/12 transition-all duration-200"
                 >
                   <div className="flex items-center gap-4">
                     <div className="p-2 bg-white/5 rounded-lg group-hover:bg-indigo-500/15 transition-colors text-[#6b6b7e] group-hover:text-indigo-400 transition-colors">
