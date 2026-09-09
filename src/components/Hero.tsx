@@ -93,7 +93,7 @@ export default function Hero() {
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-24 pb-20 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center pt-20 pb-10 sm:pt-24 sm:pb-20 overflow-hidden"
     >
       
 
@@ -104,7 +104,7 @@ export default function Hero() {
       <div className="absolute bottom-1/4 left-1/5 w-72 h-72 bg-violet-600/3 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 w-full">
-        <div className="grid lg:grid-cols-2 gap-20 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left content */}
           <motion.div
             variants={containerVariants}
@@ -122,10 +122,10 @@ export default function Hero() {
 
             {/* Name */}
             <motion.div variants={itemVariants} className="space-y-0">
-              <h1 className="font-['Space_Grotesk'] text-[clamp(60px,10vw,96px)] font-bold tracking-tight leading-[0.9] text-white">
+              <h1 className="font-['Space_Grotesk'] text-[clamp(44px,12vw,96px)] font-bold tracking-tight leading-[0.9] text-white">
                 SURIYA
               </h1>
-              <h1 className="font-['Space_Grotesk'] text-[clamp(60px,10vw,96px)] font-bold tracking-tight leading-[0.9] accent-gradient-text">
+              <h1 className="font-['Space_Grotesk'] text-[clamp(44px,12vw,96px)] font-bold tracking-tight leading-[0.9] accent-gradient-text">
                 M
               </h1>
             </motion.div>
@@ -217,7 +217,7 @@ export default function Hero() {
                 <Mail size={17} />
               </a>
               <div className="w-px h-4 bg-white/8" />
-              <span className="text-xs text-[#3a3a4e] tracking-wide">suriyacardecs@gmail.com</span>
+              <span className="hidden sm:inline text-xs text-[#3a3a4e] tracking-wide">suriyacardecs@gmail.com</span>
             </motion.div>
           </motion.div>
 

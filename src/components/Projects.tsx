@@ -281,7 +281,7 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative py-16">
+    <section id="projects" className="relative py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
         {/* Header */}
         <motion.div
@@ -292,7 +292,7 @@ export default function Projects() {
         >
           <div>
             {/* <span className="section-number">04 / Work</span> */}
-            <h2 className="font-['Space_Grotesk'] text-[clamp(48px,7vw,72px)] font-bold tracking-tight text-white leading-none mt-4">
+            <h2 className="font-['Space_Grotesk'] text-[clamp(36px,8vw,72px)] font-bold tracking-tight text-white leading-none mt-4">
               FEATURED
               <br />
               <span className="text-[#1e1e2e]">PROJECTS</span>

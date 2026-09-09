@@ -33,7 +33,7 @@ export default function Philosophy() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="philosophy" className="relative py-16 border-t border-white/5 overflow-hidden">
+    <section id="philosophy" className="relative py-10 sm:py-16 border-t border-white/5 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
       <div className="absolute inset-0 radial-glow-top" />
 
@@ -43,10 +43,10 @@ export default function Philosophy() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-10 max-w-xl"
+          className="mb-6 sm:mb-10 max-w-xl"
         >
           {/* <span className="section-number">06 / Philosophy</span> */}
-          <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
+          <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-none mt-4">
             HOW I BUILD
             <br />
             <span className="text-[#3a3a4e]">SYSTEMS</span>
@@ -54,7 +54,7 @@ export default function Philosophy() {
         </motion.div>
 
         {/* Steps — horizontal on desktop */}
-        <div className="grid md:grid-cols-5 gap-px bg-white/4 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-white/4 rounded-2xl overflow-hidden">
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
@@ -89,7 +89,7 @@ export default function Philosophy() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-24"
+          className="mt-12 sm:mt-24"
         >
           <p className="section-number mb-8">Currently interested in</p>
           <div className="flex flex-wrap gap-3">

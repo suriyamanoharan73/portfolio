@@ -54,9 +54,9 @@ export default function GithubSection() {
   const { ref, inView } = useInView(0.15);
 
   return (
-    <section id="github" className="relative py-16 border-t border-white/5">
+    <section id="github" className="relative py-10 sm:py-16 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -66,7 +66,7 @@ export default function GithubSection() {
           >
             <div>
               {/* <span className="section-number">08 / Code</span> */}
-              <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
+              <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-none mt-4">
                 CODE IS WHERE
                 <br />
                 <span className="text-[#3a3a4e]">I BUILD</span>
@@ -86,7 +86,7 @@ export default function GithubSection() {
                 className="group flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/8 hover:border-white/20 transition-all duration-200"
               >
                 <GithubIcon width={18} height={18} />
-                <span className="text-sm font-medium">github.com/suriyamanoharan73</span>
+                <span className="text-sm font-medium truncate">github.com/suriyamanoharan73</span>
                 <ExternalLink size={13} className="text-[#4a4a5e] group-hover:text-white transition-colors ml-auto" />
               </a>
             </div>

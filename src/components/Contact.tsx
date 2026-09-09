@@ -120,7 +120,7 @@ export default function Contact() {
     }`;
 
   return (
-    <section id="contact" className="relative py-16 border-t border-white/5 overflow-hidden">
+    <section id="contact" className="relative py-10 sm:py-16 border-t border-white/5 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-[#030306]" />
       <div className="absolute inset-0 bg-grid-pattern opacity-30" />
@@ -132,10 +132,10 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10"
+          className="mb-6 sm:mb-10"
         >
           {/* <span className="section-number">09 / Contact</span> */}
-          <h2 className="font-['Space_Grotesk'] text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-none mt-6">
+          <h2 className="font-['Space_Grotesk'] text-[2.5rem] sm:text-6xl lg:text-8xl font-bold tracking-tight leading-none mt-6">
             <span className="text-white">LET'S BUILD</span>
             <br />
             <span className="text-white">SOMETHING</span>
@@ -149,7 +149,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Left — contact info */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -168,13 +168,13 @@ export default function Contact() {
                   transition={{ delay: 0.3 + i * 0.08 }}
                   className="group flex items-center justify-between p-3 bg-white/2 border border-white/5 rounded-xl hover:bg-white/5 hover:border-white/12 transition-all duration-200"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 min-w-0 flex-1">
                     <div className="p-2 bg-white/5 rounded-lg group-hover:bg-indigo-500/15 transition-colors text-[#6b6b7e] group-hover:text-indigo-400 transition-colors">
                       {link.icon}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-xs text-[#3a3a4e] tracking-wide uppercase">{link.label}</p>
-                      <p className="text-sm text-[#8b8b9e] group-hover:text-white transition-colors mt-0.5">
+                      <p className="text-sm text-[#8b8b9e] group-hover:text-white transition-colors mt-0.5 truncate">
                         {link.value}
                       </p>
                     </div>

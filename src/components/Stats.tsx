@@ -97,7 +97,7 @@ export default function Stats() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="group px-6 py-10 lg:px-10 flex flex-col gap-2 hover:bg-white/[0.015] transition-colors duration-300 cursor-default"
+              className="group px-4 py-8 sm:px-6 sm:py-10 lg:px-10 flex flex-col gap-2 hover:bg-white/[0.015] transition-colors duration-300 cursor-default"
             >
               <div className="font-['Space_Grotesk'] text-4xl lg:text-5xl font-bold text-white group-hover:text-indigo-200 transition-colors duration-300 tracking-tight">
                 <AnimatedNumber

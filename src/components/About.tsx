@@ -23,7 +23,7 @@ export default function About() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="about" className="relative py-16 overflow-hidden">
+    <section id="about" className="relative py-10 sm:py-16 overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-6" ref={ref}>
@@ -31,16 +31,16 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-16 items-start"
+          className="grid lg:grid-cols-[1fr_1.3fr] gap-8 lg:gap-16 items-start"
         >
           {/* Left */}
           <motion.div variants={itemVariants} className="space-y-5">
             <div>
               {/* <span className="section-number">01 / About</span> */}
-              <h2 className="font-['Space_Grotesk'] text-[clamp(48px,7vw,80px)] font-bold tracking-tight text-white leading-none mt-4">
+              <h2 className="font-['Space_Grotesk'] text-[clamp(36px,8vw,80px)] font-bold tracking-tight text-white leading-none mt-4">
                 ABOUT
               </h2>
-              <h2 className="font-['Space_Grotesk'] text-[clamp(48px,7vw,80px)] font-bold tracking-tight text-[#1e1e2e] leading-none">
+              <h2 className="font-['Space_Grotesk'] text-[clamp(36px,8vw,80px)] font-bold tracking-tight text-[#1e1e2e] leading-none">
                 ME
               </h2>
             </div>

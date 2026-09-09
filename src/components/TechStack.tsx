@@ -36,7 +36,7 @@ export default function TechStack() {
   const active = skillCategories.find(c => c.id === activeCategory) ?? skillCategories[0];
 
   return (
-    <section id="skills" className="relative py-16 border-y border-white/5">
+    <section id="skills" className="relative py-10 sm:py-16 border-y border-white/5">
       <div className="absolute inset-0 bg-[#030306]" />
       <div className="absolute inset-0 bg-grid-pattern opacity-40" />
 
@@ -49,26 +49,27 @@ export default function TechStack() {
           className="mb-8"
         >
           {/* <span className="section-number">03 / Skills</span> */}
-          <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
+          <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-none mt-4">
             TECHNOLOGY
             <br />
             <span className="text-[#3a3a4e]">STACK</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[280px_1fr] gap-12">
+        <div className="grid lg:grid-cols-[280px_1fr] gap-6 lg:gap-12">
           {/* Category tabs */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="flex lg:flex-col gap-2"
+            className="overflow-x-auto scrollbar-hide pb-1 lg:overflow-x-visible lg:pb-0"
           >
+            <div className="flex lg:flex-col gap-2 min-w-max lg:min-w-0">
             {skillCategories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`text-left px-4 py-3 rounded-lg text-sm font-medium tracking-wide transition-all duration-200 ${
+                className={`shrink-0 text-left px-4 py-3 rounded-lg text-sm font-medium tracking-wide transition-all duration-200 ${
                   activeCategory === cat.id
                     ? 'bg-indigo-600/15 text-indigo-300 border border-indigo-500/25'
                     : 'text-[#4a4a5e] hover:text-[#8b8b9e] hover:bg-white/3'
@@ -77,6 +78,7 @@ export default function TechStack() {
                 {cat.label}
               </button>
             ))}
+            </div>
           </motion.div>
 
           {/* Skills grid */}

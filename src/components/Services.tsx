@@ -53,7 +53,7 @@ export default function Services() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="services" className="relative py-16">
+    <section id="services" className="relative py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
         {/* Section header */}
         <motion.div
@@ -63,7 +63,7 @@ export default function Services() {
           className="mb-8"
         >
           {/* <span className="section-number">02 / What I Do</span> */}
-          <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
+          <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-none mt-4">
             WHAT I<br />
             <span className="text-[#3a3a4e]">BUILD</span>
           </h2>

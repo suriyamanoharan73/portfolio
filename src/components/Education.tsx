@@ -6,7 +6,7 @@ export default function Education() {
   const { ref, inView } = useInView(0.15);
 
   return (
-    <section id="education" className="relative py-16 border-t border-white/5">
+    <section id="education" className="relative py-10 sm:py-16 border-t border-white/5">
       <div className="absolute inset-0 bg-[#030306]" />
 
       <div className="relative max-w-7xl mx-auto px-6" ref={ref}>
@@ -17,7 +17,7 @@ export default function Education() {
           className="mb-8"
         >
           {/* <span className="section-number">07 / Education & Achievement</span> */}
-          <h2 className="font-['Space_Grotesk'] text-5xl sm:text-6xl font-bold tracking-tight text-white leading-none mt-4">
+          <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-none mt-4">
             EDUCATION &amp;
             <br />
             <span className="text-[#3a3a4e]">ACHIEVEMENT</span>
