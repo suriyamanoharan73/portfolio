@@ -1,9 +1,5 @@
-import smtplib
-import ssl
 import os
 import html
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import Limiter, _rate_limit_exceeded_handler
@@ -12,6 +8,7 @@ from slowapi.errors import RateLimitExceeded
 from pydantic import BaseModel, EmailStr, field_validator
 from pydantic import StringConstraints
 from typing import Annotated
+import resend
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -40,11 +37,18 @@ app.add_middleware(
 )
 
 # ── SMTP config ────────────────────────────────────────────────
-SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
-SMTP_EMAIL = os.getenv("SMTP_EMAIL")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
-RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", SMTP_EMAIL)
+RESEND_API_KEY = os.getenv("RESEND_API_KEY")
+RESEND_FROM_EMAIL = os.getenv(
+    "RESEND_FROM_EMAIL",
+    "onboarding@resend.dev"
+)
+RECIPIENT_EMAIL = os.getenv(
+    "RECIPIENT_EMAIL",
+    "dev.suriya.m@gmail.com"
+)
+
+if RESEND_API_KEY:
+    resend.api_key = RESEND_API_KEY
 
 
 # ── Request model with length limits ──────────────────────────
@@ -131,35 +135,51 @@ def health():
 @app.post("/api/contact")
 @limiter.limit("5/hour")
 def contact(request: Request, form: ContactForm):
-    if not SMTP_EMAIL or not SMTP_PASSWORD:
-        raise HTTPException(status_code=500, detail="Email service not configured")
+
+    if not RESEND_API_KEY:
+        raise HTTPException(
+            status_code=500,
+            detail="Email service not configured"
+        )
 
     try:
-        msg = MIMEMultipart("alternative")
-        msg["Subject"] = f"[Portfolio] {form.subject}"
-        msg["From"]    = SMTP_EMAIL
-        msg["To"]      = RECIPIENT_EMAIL
-        msg["Reply-To"] = str(form.email)
+        plain = (
+            f"From: {form.name} <{form.email}>\n"
+            f"Subject: {form.subject}\n\n"
+            f"{form.message}"
+        )
 
-        plain = f"From: {form.name} <{form.email}>\nSubject: {form.subject}\n\n{form.message}"
-        msg.attach(MIMEText(plain, "plain"))
-        msg.attach(MIMEText(build_html_email(form.name, str(form.email), form.subject, form.message), "html"))
+        html_content = build_html_email(
+            form.name,
+            str(form.email),
+            form.subject,
+            form.message
+        )
 
-        context = ssl.create_default_context()
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-            server.ehlo()
-            server.starttls(context=context)
-            server.login(SMTP_EMAIL, SMTP_PASSWORD)
-            server.sendmail(SMTP_EMAIL, RECIPIENT_EMAIL, msg.as_string())
+        params = {
+            "from": RESEND_FROM_EMAIL,
+            "to": [RECIPIENT_EMAIL],
+            "subject": f"[Portfolio] {form.subject}",
+            "html": html_content,
+            "text": plain,
+            "reply_to": str(form.email),
+        }
 
-        return {"success": True, "message": "Email sent successfully"}
+        email = resend.Emails.send(params)
 
-    except smtplib.SMTPAuthenticationError:
-        raise HTTPException(status_code=500, detail="SMTP authentication failed. Check your email and app password.")
-    except smtplib.SMTPException as e:
-        raise HTTPException(status_code=500, detail=f"SMTP error: {str(e)}")
+        return {
+            "success": True,
+            "message": "Email sent successfully",
+            "email_id": email.get("id")
+        }
+
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+        print(f"Resend error: {str(e)}")
+
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to send email"
+        )
 
 
 if __name__ == "__main__":
